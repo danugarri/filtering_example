@@ -1,0 +1,17 @@
+.filters-container {
+  background-color: rgb(225, 236, 241);
+  width: 95vw;
+  height: 30vh;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+}
+.selects-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+.filters-head {
+  font-size: 14px;
+  font-weight: 600;
+}
