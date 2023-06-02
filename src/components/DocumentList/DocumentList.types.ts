@@ -9,3 +9,8 @@ export enum CountryEnum {
   FRANCE = 'France',
   ITALY = 'Italy',
 }
+
+export enum OptionsEnum {
+  VERSION = 'Version',
+  COUNTRY = 'Country',
+}
