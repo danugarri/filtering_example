@@ -10,7 +10,4 @@ export enum CountryEnum {
   ITALY = 'Italy',
 }
 
-export enum OptionsEnum {
-  VERSION = 'Version',
-  COUNTRY = 'Country',
-}
+export type Option = 'country' | 'version';
