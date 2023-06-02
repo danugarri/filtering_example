@@ -1,9 +1,9 @@
 import { DocumentFileType } from '../components/DocumentList/DocumentList.types';
-import { Option } from '../components/Filters/Select/select.types';
+import { OptionsType } from '../components/Filters/Select/select.types';
 
 export const getPossibleOptions = (
   data: DocumentFileType[],
-  pattern: Option
+  pattern: OptionsType
 ): string[] => {
   // convert the Set object back to an array of unique country values.
   const uniqueOptions = Array.from(

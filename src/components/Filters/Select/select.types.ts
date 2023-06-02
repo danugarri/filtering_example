@@ -1,1 +1,1 @@
-export type Option = 'country' | 'version';
+export type OptionsType = 'country' | 'version';

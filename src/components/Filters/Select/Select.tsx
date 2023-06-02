@@ -1,9 +1,16 @@
+import './Select.css';
+
 export type SelectProps = {
   options: string[];
 };
 export const Select = ({ options }: SelectProps) => {
+  const getOptionStyle = (option: string) => {
+    const isPattern =
+      option === 'version' || option === 'country' ? 'pattern-style' : '';
+    return isPattern;
+  };
   return (
-    <select name="select">
+    <select name="select" defaultValue={'version' || 'country'}>
       {options &&
         options.map((option) => (
           <option
@@ -11,7 +18,7 @@ export const Select = ({ options }: SelectProps) => {
             value={
               option === 'version' || option === 'country' ? undefined : option
             }
-            selected={option === 'version' || option === 'country'}
+            className={getOptionStyle(option)}
           >
             {option}
           </option>
