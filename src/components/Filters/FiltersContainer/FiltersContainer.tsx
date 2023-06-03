@@ -10,8 +10,11 @@ export const FiltersContainer = ({
 }: FiltersContainerProps) => {
   const { data } = useContext(DataContext);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [searchingValue, setSearchingValue] = useState<string>('');
 
-  const updateOptions = (e: ChangeEvent<HTMLSelectElement>) => {
+  const updateOptions = (
+    e: ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
     setSelectedFilters((prev) =>
       // only unique elements
       Array.from(new Set(prev.concat(e.target.value)))
@@ -25,7 +28,12 @@ export const FiltersContainer = ({
       selectedFilters.forEach((selection) => {
         filteredData = filteredData.filter((element) => {
           for (const prop in element) {
-            if (element[prop] === selection) {
+            if (
+              element[prop] === selection &&
+              element['text']
+                .toLowerCase()
+                .includes(searchingValue.toLowerCase())
+            ) {
               return true;
             }
           }
@@ -37,7 +45,7 @@ export const FiltersContainer = ({
     };
 
     filterData();
-  }, [selectedFilters, data, setFilteredData]);
+  }, [selectedFilters, data, setFilteredData, searchingValue]);
 
   return (
     <div className="filters-container">
@@ -65,6 +73,7 @@ export const FiltersContainer = ({
           className="clear-all-filters"
           onClick={() => {
             setSelectedFilters([]);
+            setSearchingValue('');
           }}
         >
           Clear all filters
@@ -77,6 +86,11 @@ export const FiltersContainer = ({
           </li>
         ))}
       </ul>
+      <input
+        type="text"
+        value={searchingValue}
+        onChange={(e) => setSearchingValue(e.target.value)}
+      />
     </div>
   );
 };

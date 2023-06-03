@@ -1,16 +1,19 @@
-import { CountryEnum, DocumentFileType } from '../components/DocumentList/DocumentList.types';
+import {
+  CountryEnum,
+  DocumentFileType,
+} from '../components/DocumentList/DocumentList.types';
 
 export const mockedData: DocumentFileType[] = [
   {
     country: CountryEnum.SPAIN,
     version: '0.0.1',
-    text: 'Spain version 0.0.1',
+    text: 'Spain test text',
     id: '1',
   },
   {
     country: CountryEnum.SPAIN,
     version: '1.1.1',
-    text: 'Spain version 1.1.1',
+    text: 'Spain version 1',
     id: '2',
   },
   {
