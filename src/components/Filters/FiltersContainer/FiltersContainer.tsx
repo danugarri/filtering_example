@@ -4,6 +4,7 @@ import { DataContext } from '../../DataProvider/DataProvider';
 import { getPossibleOptions } from '../../../helpers/helpers';
 import './FiltersContainer.css';
 import { FiltersContainerProps } from './filtersContainer.types';
+import { SearchingFilter } from '../SearchingFilter/SearchingFilter';
 
 export const FiltersContainer = ({
   setFilteredData,
@@ -25,21 +26,22 @@ export const FiltersContainer = ({
     const filterData = () => {
       let filteredData = data;
 
-      selectedFilters.forEach((selection) => {
+      if (searchingValue !== '') {
+        filteredData = filteredData.filter((element) =>
+          element['text'].toLowerCase().includes(searchingValue.toLowerCase())
+        );
+      }
+
+      if (selectedFilters.length > 0) {
         filteredData = filteredData.filter((element) => {
           for (const prop in element) {
-            if (
-              element[prop] === selection &&
-              element['text']
-                .toLowerCase()
-                .includes(searchingValue.toLowerCase())
-            ) {
+            if (selectedFilters.includes(element[prop])) {
               return true;
             }
           }
           return false;
         });
-      });
+      }
 
       setFilteredData(filteredData);
     };
@@ -86,10 +88,9 @@ export const FiltersContainer = ({
           </li>
         ))}
       </ul>
-      <input
-        type="text"
-        value={searchingValue}
-        onChange={(e) => setSearchingValue(e.target.value)}
+      <SearchingFilter
+        searchingValue={searchingValue}
+        setSearchingValue={setSearchingValue}
       />
     </div>
   );
