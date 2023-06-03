@@ -9,12 +9,10 @@ function App() {
   const [filteredData, setFilteredData] = useState<DocumentFileType[]>([]);
 
   return (
-    <>
-      <DataProvider>
-        <FiltersContainer setFilteredData={setFilteredData} />
-        <DocumentList filteredData={filteredData} />
-      </DataProvider>
-    </>
+    <DataProvider>
+      <FiltersContainer setFilteredData={setFilteredData} />
+      <DocumentList filteredData={filteredData} />
+    </DataProvider>
   );
 }
 
