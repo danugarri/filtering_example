@@ -1,1 +1,9 @@
-
+select:focus {
+  border: 2px solid blue;
+}
+select:checked {
+  border: 2px solid blue;
+}
+select {
+  outline: none;
+}
