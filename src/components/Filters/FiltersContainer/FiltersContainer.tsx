@@ -10,14 +10,19 @@ export const FiltersContainer = () => {
   return (
     <div className="filters-container">
       <span className="filters-head">FILTERS</span>
-      {data ? (
-        <section className="selects-section">
-          <Select options={getPossibleOptions(data, 'country')} />
-          <Select options={getPossibleOptions(data, 'version')} />
-        </section>
-      ) : (
-        <></>
-      )}
+      <section className="first-row">
+        {data ? (
+          <section className="selects-section">
+            <Select options={getPossibleOptions(data, 'country')} />
+            <Select options={getPossibleOptions(data, 'version')} />
+          </section>
+        ) : (
+          <></>
+        )}
+        <button className="clear-all-filters" onClick={() => {}}>
+          Clear all filters
+        </button>
+      </section>
     </div>
   );
 };

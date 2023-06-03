@@ -15,3 +15,17 @@
   font-size: 14px;
   font-weight: 600;
 }
+
+.clear-all-filters {
+  float: right;
+  position: relative;
+  right: 170px;
+  bottom: 26px;
+  border: none;
+  background-color: transparent;
+  color: rgb(176, 177, 182);
+  font-size: 14px;
+}
+.clear-all-filters:focus {
+  outline: none;
+}
