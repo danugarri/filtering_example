@@ -1,15 +1,11 @@
-import { useContext } from 'react';
 import './DocumentList.css';
-import { DataContext } from '../DataProvider/DataProvider';
 import { DocumentListProps } from './DocumentList.types';
+import { Skeleton } from '../Skeleton/Skeleton';
 
 export const DocumentList = ({ filteredData }: DocumentListProps) => {
-  const { data } = useContext(DataContext);
-  // store the original data array or the filtered one
-
   return (
     <>
-      {data.length > 0 ? (
+      {filteredData.length > 0 ? (
         filteredData.map((documnet) => (
           <div key={documnet.id} className="document-container">
             <p>{`Documento ${documnet.id}`}</p>
@@ -17,7 +13,7 @@ export const DocumentList = ({ filteredData }: DocumentListProps) => {
           </div>
         ))
       ) : (
-        <div className="skeleton"> empty</div>
+        <Skeleton />
       )}
     </>
   );

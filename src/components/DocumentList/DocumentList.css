@@ -9,12 +9,3 @@
   font-size: 14px;
   background-color: rgb(255, 255, 255);
 }
-.skeleton {
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(189, 191, 194);
-  border-radius: 10px;
-  height: 4rem;
-  width: 90vw;
-  padding: 1rem;
-  margin: 2rem;
-}
