@@ -10,13 +10,16 @@ export const DocumentList = ({ filteredData }: DocumentListProps) => {
 
   return (
     <>
-      {data &&
+      {data.length > 0 ? (
         displayedData.map((documnet) => (
           <div key={documnet.id} className="document-container">
             <p>{`Documento ${documnet.id}`}</p>
             <p>{documnet.text}</p>
           </div>
-        ))}
+        ))
+      ) : (
+        <div className="skeleton"> empty</div>
+      )}
     </>
   );
 };
