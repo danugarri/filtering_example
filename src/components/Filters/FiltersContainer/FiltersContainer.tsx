@@ -23,6 +23,10 @@ export const FiltersContainer = () => {
           Clear all filters
         </button>
       </section>
+      <ul className="filtered-options-container">
+        <li className="filtered-option">{'opcion'}</li>
+        <li className="filtered-option">{'opcion'}</li>
+      </ul>
     </div>
   );
 };
