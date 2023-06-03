@@ -16,6 +16,9 @@
   font-size: 14px;
   font-weight: 600;
 }
+.first-row {
+  width: 40vw;
+}
 
 /* clear button */
 .clear-all-filters {
