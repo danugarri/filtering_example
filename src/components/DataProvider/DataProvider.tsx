@@ -1,30 +1,15 @@
-import React, { ReactNode, createContext, useState, useEffect } from 'react';
-import { DocumentFileType } from '../DocumentList/DocumentList.types';
-import { fetchData } from '../../api/api';
-export type DataContextType = {
-  data: DocumentFileType[];
-  setData: React.Dispatch<DocumentFileType[]>;
-};
+import React, { ReactNode, createContext } from 'react';
+import { useFetchData } from '../../hooks/useFetchData';
+import { DataContextType } from './dataContext.types';
+import { initialDataContext } from './dataContext.const';
 
-export const DataContext = createContext<DataContextType>({
-  data: [],
-  setData: () => {
-    return;
-  },
-});
+// Creating context and passing initial value
+export const DataContext = createContext<DataContextType>(initialDataContext);
 
 export const DataProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [data, setData] = useState<DocumentFileType[]>([]);
-
-  useEffect(() => {
-    const updateData = async () => {
-      const response = await fetchData();
-      setData(response);
-    };
-    updateData();
-  }, []);
+  const { data, setData } = useFetchData();
 
   return (
     <DataContext.Provider value={{ data, setData }}>
