@@ -20,3 +20,12 @@
 "typescript": "^5.0.2",
 "vite": "^4.3.9"
 }
+
+# Docker
+
+1. Build the app image
+   docker build -t my-app .
+2. Run the container
+   docker run -d -p 3000:3000 my-app
+
+`Remember to initialise your docker and be logged in to docker`
