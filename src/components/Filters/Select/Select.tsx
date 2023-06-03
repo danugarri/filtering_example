@@ -1,13 +1,24 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import './Select.css';
 export type SelectProps = {
   options: string[];
   updateOptions: (e: ChangeEvent<HTMLSelectElement>) => void;
   keyword: string;
+  selectedFilters: string[];
 };
 
-export const Select = ({ options, updateOptions, keyword }: SelectProps) => {
+export const Select = ({
+  options,
+  updateOptions,
+  keyword,
+  selectedFilters,
+}: SelectProps) => {
   const [selection, setSelection] = useState('');
+
+  useEffect(() => {
+    // reset select value
+    selectedFilters.length === 0 && setSelection('');
+  }, [selectedFilters.length, keyword]);
 
   return (
     <>
@@ -19,7 +30,7 @@ export const Select = ({ options, updateOptions, keyword }: SelectProps) => {
           setSelection(e.target.value);
         }}
       >
-        <option value={''} disabled hidden>
+        <option value={''} disabled hidden={false}>
           {keyword}
         </option>
         {options &&

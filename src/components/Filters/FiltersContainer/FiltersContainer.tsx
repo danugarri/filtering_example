@@ -6,10 +6,10 @@ import './FiltersContainer.css';
 
 export const FiltersContainer = () => {
   const data = useContext(DataContext);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   const updateOptions = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOptions((prev) =>
+    setSelectedFilters((prev) =>
       // only unique elements
       Array.from(new Set(prev.concat(e.target.value)))
     );
@@ -25,11 +25,13 @@ export const FiltersContainer = () => {
               options={getPossibleOptions(data, 'country')}
               updateOptions={updateOptions}
               keyword="country"
+              selectedFilters={selectedFilters}
             />
             <Select
               options={getPossibleOptions(data, 'version')}
               updateOptions={updateOptions}
               keyword="version"
+              selectedFilters={selectedFilters}
             />
           </section>
         ) : (
@@ -38,14 +40,14 @@ export const FiltersContainer = () => {
         <button
           className="clear-all-filters"
           onClick={() => {
-            setSelectedOptions([]);
+            setSelectedFilters([]);
           }}
         >
           Clear all filters
         </button>
       </section>
       <ul className="filtered-options-container">
-        {selectedOptions.map((option) => (
+        {selectedFilters.map((option) => (
           <li className="filtered-option" key={option}>
             {option}
           </li>
