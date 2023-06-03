@@ -38,7 +38,7 @@ export const FiltersContainer = () => {
         <button
           className="clear-all-filters"
           onClick={() => {
-            updateOptions([]);
+            setSelectedOptions([]);
           }}
         >
           Clear all filters
