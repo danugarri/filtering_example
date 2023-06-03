@@ -5,7 +5,7 @@ export const getPossibleOptions = (
   data: DocumentFileType[],
   pattern: OptionsType
 ): string[] => {
-  // convert the Set object back to an array of unique country values.
+  // convert the Set object back to an array of unique values.
   const uniqueOptions = Array.from(
     new Set(data.map((document) => document[pattern]))
   );
