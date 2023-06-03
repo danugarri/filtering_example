@@ -21,7 +21,7 @@
 .clear-all-filters {
   float: right;
   position: relative;
-  right: 170px;
+  left: 1px;
   bottom: 26px;
   border: none;
   background-color: transparent;

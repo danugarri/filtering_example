@@ -1,16 +1,22 @@
-import React from 'react';
-import { DocumentFileType } from './DocumentList.types';
+import { useContext } from 'react';
 import './DocumentList.css';
+import { DataContext } from '../DataProvider/DataProvider';
+import { DocumentListProps } from './DocumentList.types';
 
-export const DocumentList: React.FC<{ documents: DocumentFileType[] }> = ({ documents }) => {
+export const DocumentList = ({ filteredData }: DocumentListProps) => {
+  const { data } = useContext(DataContext);
+  // store the original data array or the filtered one
+  const displayedData = filteredData.length > 0 ? filteredData : data;
+
   return (
     <>
-      {documents.map((data) => (
-        <div key={data.id} className="document-container">
-          <p>{`Documento ${data.id}`}</p>
-          <p>{data.text}</p>
-        </div>
-      ))}
+      {data &&
+        displayedData.map((documnet) => (
+          <div key={documnet.id} className="document-container">
+            <p>{`Documento ${documnet.id}`}</p>
+            <p>{documnet.text}</p>
+          </div>
+        ))}
     </>
   );
 };

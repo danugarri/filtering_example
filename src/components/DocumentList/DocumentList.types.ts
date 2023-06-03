@@ -1,4 +1,4 @@
-export interface DocumentFileType {
+export interface DocumentFileType extends Record<string, string> {
   country: CountryEnum;
   version: string;
   text: string;
@@ -9,3 +9,6 @@ export enum CountryEnum {
   FRANCE = 'France',
   ITALY = 'Italy',
 }
+export type DocumentListProps = {
+  filteredData: DocumentFileType[];
+};

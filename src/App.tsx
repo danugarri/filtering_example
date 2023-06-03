@@ -1,16 +1,19 @@
+import { useState } from 'react';
 import './App.css';
-import { mockedData } from './__mocks__/mock';
 import { DataProvider } from './components/DataProvider/DataProvider';
 import { DocumentList } from './components/DocumentList/DocumentList';
+import { DocumentFileType } from './components/DocumentList/DocumentList.types';
 import { FiltersContainer } from './components/Filters/FiltersContainer/FiltersContainer';
 
 function App() {
+  const [filteredData, setFilteredData] = useState<DocumentFileType[]>([]);
+
   return (
     <>
       <DataProvider>
-        <FiltersContainer />
+        <FiltersContainer setFilteredData={setFilteredData} />
+        <DocumentList filteredData={filteredData} />
       </DataProvider>
-      <DocumentList documents={mockedData} />
     </>
   );
 }
