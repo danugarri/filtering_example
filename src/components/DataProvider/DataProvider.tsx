@@ -1,6 +1,6 @@
-import React, { ReactNode, createContext, useState } from 'react';
+import React, { ReactNode, createContext, useState, useEffect } from 'react';
 import { DocumentFileType } from '../DocumentList/DocumentList.types';
-import { mockedData } from '../../__mocks__/mock';
+import { fetchData } from '../../api/api';
 export type DataContextType = {
   data: DocumentFileType[];
   setData: React.Dispatch<DocumentFileType[]>;
@@ -16,7 +16,15 @@ export const DataContext = createContext<DataContextType>({
 export const DataProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [data, setData] = useState<DocumentFileType[]>(mockedData);
+  const [data, setData] = useState<DocumentFileType[]>([]);
+
+  useEffect(() => {
+    const updateData = async () => {
+      const response = await fetchData();
+      setData(response);
+    };
+    updateData();
+  }, []);
 
   return (
     <DataContext.Provider value={{ data, setData }}>
