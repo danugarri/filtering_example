@@ -1,9 +1,8 @@
-import { ChangeEvent, useContext, useState, useEffect, useRef } from 'react';
+import { ChangeEvent, useContext, useState, useEffect } from 'react';
 import { Select } from '../Select/Select';
 import { DataContext } from '../../DataProvider/DataProvider';
 import { getPossibleOptions } from '../../../helpers/helpers';
 import './FiltersContainer.css';
-import { DocumentFileType } from '../../DocumentList/DocumentList.types';
 import { FiltersContainerProps } from './filtersContainer.types';
 
 export const FiltersContainer = ({
@@ -19,26 +18,12 @@ export const FiltersContainer = ({
     );
   };
 
-  const prevSelectedFilters = useRef(selectedFilters);
   useEffect(() => {
-    const filtered: DocumentFileType[] = [];
-
     const filterData = () => {
-      if (prevSelectedFilters.current === selectedFilters) {
-        // Selected filters haven't changed, no need to filter again
-        return;
-      }
-
-      prevSelectedFilters.current = selectedFilters; // Update previous selected filters
-
-      if (selectedFilters.length === 0) {
-        // No filters selected, return original data
-        setFilteredData(data);
-        return;
-      }
+      let filteredData = data;
 
       selectedFilters.forEach((selection) => {
-        const filteredData = data.filter((element) => {
+        filteredData = filteredData.filter((element) => {
           for (const prop in element) {
             if (element[prop] === selection) {
               return true;
@@ -46,11 +31,9 @@ export const FiltersContainer = ({
           }
           return false;
         });
-        filtered.push(...filteredData);
       });
 
-      const uniqueFiltered = Array.from(new Set(filtered));
-      setFilteredData(uniqueFiltered);
+      setFilteredData(filteredData);
     };
 
     filterData();
