@@ -1,19 +1,18 @@
-import { useState } from 'react';
+import { ChangeEvent } from 'react';
 import './Select.css';
 export type SelectProps = {
   options: string[];
+  updateOptions: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-export const Select = ({ options }: SelectProps) => {
-  const [selectedOption, setSelectedOption] = useState<string[]>([]);
-  console.log(selectedOption);
+export const Select = ({ options, updateOptions }: SelectProps) => {
   return (
     <>
       <select
         name="select"
         defaultValue={'version' || 'country'}
         onChange={(e) => {
-          setSelectedOption((prev) => prev.concat(e.target.value));
+          updateOptions(e);
         }}
       >
         {options &&
@@ -30,7 +29,6 @@ export const Select = ({ options }: SelectProps) => {
             </option>
           ))}
       </select>
-      <span>{selectedOption}</span>
     </>
   );
 };

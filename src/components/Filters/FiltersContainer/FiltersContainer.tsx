@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
 import { Select } from '../Select/Select';
 import { DataContext } from '../../DataProvider/DataProvider';
 import { getPossibleOptions } from '../../../helpers/helpers';
@@ -6,6 +6,10 @@ import './FiltersContainer.css';
 
 export const FiltersContainer = () => {
   const data = useContext(DataContext);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const updateOptions = (e: ChangeEvent<HTMLSelectElement>) =>
+    setSelectedOptions((prev) => prev.concat(e.target.value));
 
   return (
     <div className="filters-container">
@@ -13,8 +17,14 @@ export const FiltersContainer = () => {
       <section className="first-row">
         {data ? (
           <section className="selects-section">
-            <Select options={getPossibleOptions(data, 'country')} />
-            <Select options={getPossibleOptions(data, 'version')} />
+            <Select
+              options={getPossibleOptions(data, 'country')}
+              updateOptions={updateOptions}
+            />
+            <Select
+              options={getPossibleOptions(data, 'version')}
+              updateOptions={updateOptions}
+            />
           </section>
         ) : (
           <></>
@@ -24,8 +34,11 @@ export const FiltersContainer = () => {
         </button>
       </section>
       <ul className="filtered-options-container">
-        <li className="filtered-option">{'opcion'}</li>
-        <li className="filtered-option">{'opcion'}</li>
+        {selectedOptions.map((option) => (
+          <li className="filtered-option" key={option}>
+            {option}
+          </li>
+        ))}
       </ul>
     </div>
   );
