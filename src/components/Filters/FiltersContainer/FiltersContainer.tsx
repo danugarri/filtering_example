@@ -8,8 +8,12 @@ export const FiltersContainer = () => {
   const data = useContext(DataContext);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
-  const updateOptions = (e: ChangeEvent<HTMLSelectElement>) =>
-    setSelectedOptions((prev) => prev.concat(e.target.value));
+  const updateOptions = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOptions((prev) =>
+      // only unique elements
+      Array.from(new Set(prev.concat(e.target.value)))
+    );
+  };
 
   return (
     <div className="filters-container">
@@ -29,7 +33,12 @@ export const FiltersContainer = () => {
         ) : (
           <></>
         )}
-        <button className="clear-all-filters" onClick={() => {}}>
+        <button
+          className="clear-all-filters"
+          onClick={() => {
+            updateOptions([]);
+          }}
+        >
           Clear all filters
         </button>
       </section>
