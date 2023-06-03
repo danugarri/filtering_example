@@ -26,22 +26,17 @@ export const FiltersContainer = ({
     const filterData = () => {
       let filteredData = data;
 
-      if (searchingValue !== '') {
-        filteredData = filteredData.filter((element) =>
-          element['text'].toLowerCase().includes(searchingValue.toLowerCase())
-        );
-      }
-
-      if (selectedFilters.length > 0) {
+      selectedFilters.forEach((selection) => {
         filteredData = filteredData.filter((element) => {
           for (const prop in element) {
-            if (selectedFilters.includes(element[prop])) {
+            if (element[prop] === selection) {
               return true;
             }
           }
+
           return false;
         });
-      }
+      });
 
       setFilteredData(filteredData);
     };
