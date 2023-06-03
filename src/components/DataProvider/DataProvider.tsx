@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext } from 'react';
 import { useFetchData } from '../../hooks/useFetchData';
-import { DataContextType } from './dataContext.types';
-import { initialDataContext } from './dataContext.const';
+import { DataContextType } from './dataProvider.types';
+import { initialDataContext } from './dataProvider.const';
 
 // Creating context and passing initial value
 export const DataContext = createContext<DataContextType>(initialDataContext);
