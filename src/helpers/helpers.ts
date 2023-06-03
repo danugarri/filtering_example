@@ -7,7 +7,7 @@ export const getPossibleOptions = (
 ): string[] => {
   // convert the Set object back to an array of unique country values.
   const uniqueOptions = Array.from(
-    new Set(data.map((document) => document[pattern]).concat(pattern))
+    new Set(data.map((document) => document[pattern]))
   );
   return uniqueOptions;
 };

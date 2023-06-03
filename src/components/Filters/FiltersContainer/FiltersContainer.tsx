@@ -24,10 +24,12 @@ export const FiltersContainer = () => {
             <Select
               options={getPossibleOptions(data, 'country')}
               updateOptions={updateOptions}
+              keyword="country"
             />
             <Select
               options={getPossibleOptions(data, 'version')}
               updateOptions={updateOptions}
+              keyword="version"
             />
           </section>
         ) : (
