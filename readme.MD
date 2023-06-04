@@ -1,3 +1,21 @@
+# Introduction
+
+This project is configured with Vite to use Typescript. It comes with Eslint and Prettier.
+
+# Summary
+
+Inside src folder there is an api folder where we are making a promise which returns a mock data with an array of objects containig this data structure :
+{
+country: CountryEnum;
+version: string;
+text: string;
+id: string;
+}
+
+- An id is added as an unique identifier
+
+Once the promise is resolved there is DataProvider as wrapper to pass that data down to its children
+
 # Start the dev server
 
 - npm run dev
