@@ -7,6 +7,6 @@ export default defineConfig({
   // this server prop is necessary to build a docker image and run a container
   server: {
     host: '0.0.0.0',
-    port: 3000,
+    port: 80,
   },
 });

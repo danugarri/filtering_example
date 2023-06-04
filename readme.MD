@@ -44,6 +44,12 @@ Once the promise is resolved there is DataProvider as wrapper to pass that data 
 1. Build the app image
    docker build -t my-app .
 2. Run the container
-   docker run -d -p 3000:3000 my-app
+   docker run -d -p 80:80 my-app
 
 `Remember to initialise your docker and be logged in to docker`
+
+# Deployment on ACI (Azure container instance)
+
+- I have pushed a docker image of this repo to an ACR (Azure container registry) and deployed the container on Azure
+
+The public url is: `http://filtering-app-danugarri.a7bmc4fcgth6ckbt.westeurope.azurecontainer.io/`
