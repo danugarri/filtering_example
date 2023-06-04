@@ -1,8 +1,10 @@
 {
   "name": "telefonica",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": "danugarri@gmail.com",
+  "homepage": "http://filtering-app-danugarri.a7bmc4fcgth6ckbt.westeurope.azurecontainer.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
