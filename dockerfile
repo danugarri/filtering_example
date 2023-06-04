@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Expose the desired port (replace 80 with your desired port number)
-EXPOSE 3000
+EXPOSE 80
 
 # Start the app
 CMD [ "npm", "run", "dev" ]
